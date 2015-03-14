@@ -15,13 +15,11 @@ public class Test {
 		user.addEventToUser(events.get(2));
 		
 		HashMap<String, Tag> tagsFromUser = user.getTagsFromUser();//get tags from user
-
-		//TODO: jaccard -> compare users tags with all events tags	
+		
+		Engine.removeDuplicatedEvents(events,user.getEvents());
 		List<Event> listRecommendedEvents = Engine.listRecommendedEvents(events, tagsFromUser);
 		
-		
-		//listAllEvents(events);
-		
+		listAllEvents(listRecommendedEvents);
 		
 	}
 
@@ -78,11 +76,24 @@ public class Test {
 		Event e5 = new Event("pray", 5);
 		e5.addTagToEvent(t15);
 		
+		Event e6 = new Event("zztop", 6);
+		e6.addTagToEvent(t9);
+		e6.addTagToEvent(t13);
+		e6.addTagToEvent(t8);
+		e6.addTagToEvent(t12);
+		
+		Event e7 = new Event("the zoo", 7);
+		e7.addTagToEvent(t9);
+		e7.addTagToEvent(t13);
+		e7.addTagToEvent(t8);
+		
 		events.add(e1);
 		events.add(e2);
 		events.add(e3);
 		events.add(e4);
 		events.add(e5);
+		events.add(e6);
+		events.add(e7);
 		
 		return events;
 	}
